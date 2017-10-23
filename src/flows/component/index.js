@@ -33,10 +33,7 @@ var questions = [
   {
     type: 'input',
     name: 'filename',
-    default: (answers) => {
-      const base = humps.decamelize(answers.className, { separator: '-' });
-      return `${base}.jsx`
-    },
+    default: (answers) => humps.decamelize(answers.className, { separator: '-' }),
     message: 'What should the file be called?'
   },
 ] 
@@ -55,7 +52,7 @@ export default () => {
       const output = answers.componentType === 'class'
         ? classTemplate(answers)
         : functionTemplate(answers);
-      fs.writeFileSync(answers.filename, output);
+      fs.writeFileSync(`${answers.filename}.jsx`, output);
     }
     else {
       console.log('File with that name exists already!', answers.filename)

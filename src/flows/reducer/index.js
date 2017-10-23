@@ -8,37 +8,37 @@ var Handlebars = require('handlebars');
 var questions = [
   {
     type: 'input',
-    name: 'sagaName',
+    name: 'reducerName',
     message: 'What should the saga be called?'
   },
   {
     type: 'confirm',
     name: 'createTests',
-    default: true,
+    default: false,
     message: 'Create tests file?'
   },
   {
     type: 'input',
     name: 'filename',
-    default: (answers) => humps.decamelize(answers.sagaName, { separator: '-' }),
+    default: (answers) => humps.decamelize(answers.reducerName, { separator: '-' }),
     message: 'What should the file be called?'
   },
 ] 
 
-const sagaTemplate = Handlebars.compile(
-  fs.readFileSync(`${__dirname}/saga.hbs`, 'utf8')
+const reducerTemplate = Handlebars.compile(
+  fs.readFileSync(`${__dirname}/reducer.hbs`, 'utf8')
 );
 
 const testTemplate = Handlebars.compile(
-  fs.readFileSync(`${__dirname}/saga.test.hbs`, 'utf8')
+  fs.readFileSync(`${__dirname}/reducer.test.hbs`, 'utf8')
 );
 
 export default () => {
   prompt(questions).then((answers) => {
     if (!fs.existsSync(answers.filename)) {
 
-      const sagaOutput = sagaTemplate(answers)
-      fs.writeFileSync(`${answers.filename}.js`, sagaOutput);
+      const reducerOutput = reducerTemplate(answers)
+      fs.writeFileSync(`${answers.filename}.js`, reducerOutput);
 
       if (answers.createTests) {
         const testOutput = testTemplate(answers)

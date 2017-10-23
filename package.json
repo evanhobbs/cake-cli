@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "bin": {
+    "cake": "cli.js"
+  },
   "scripts": {
     "babel": "babel --copy-files --out-dir dist src",
     "build": "npm run babel",
