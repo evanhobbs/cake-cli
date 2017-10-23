@@ -1,0 +1,25 @@
+import React from 'react';
+{{#if isConnected}}
+import { connect } from 'react-redux';
+{{/if}}
+
+{{#if isConnected }}
+export const {{className}} = () => (
+  <div></div>
+);
+{{else}}
+const {{className}} = () => (
+  <div></div>
+);
+{{/if}}
+
+{{className}}.propTypes = {};
+
+{{#if isConnected}}
+const mapStateToProps = () => ({});
+const mapDispatchToProps = () => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)({{className}});
+{{else}}
+export default {{className}};
+{{/if}}

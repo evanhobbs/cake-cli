@@ -1,0 +1,21 @@
+import React, { Component } from 'react';
+{{#if isConnected}}
+import { connect } from 'react-redux';
+{{/if}}
+
+export {{#unless isConnected }}default {{/unless}}class {{className}} extends Component {
+  render() {
+    return (
+      <div></div>
+    );
+  }
+};
+
+{{className}}.propTypes = {};
+{{#if isConnected}}
+
+const mapStateToProps = () => ({});
+const mapDispatchToProps = () => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)({{className}});
+{{/if}}

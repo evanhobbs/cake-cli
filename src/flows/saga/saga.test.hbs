@@ -1,0 +1,10 @@
+import { testSaga } from 'redux-saga-test-plan';
+import {{sagaName}} from './{{filename}}';
+
+describe('Saga: {{sagaName}}', () => {
+  it('does something', function () {
+    testSaga({{sagaName}})
+      .next()
+      .take('*')
+  })
+});
